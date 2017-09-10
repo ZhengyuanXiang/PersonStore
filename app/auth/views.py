@@ -44,4 +44,3 @@ def change_password():
 @auth.route('/logout')
 def logout():
     pass
-
