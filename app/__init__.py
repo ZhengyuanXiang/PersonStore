@@ -6,9 +6,10 @@ from flask_moment import Moment
 from flask_login import LoginManager
 import eventlet
 from device_mng import socketio
+from flask_redis import FlaskRedis
 
+redis_conn = FlaskRedis()
 bootstrap = Bootstrap()
-db = SQLAlchemy()
 moment = Moment()
 
 eventlet.monkey_patch()
@@ -26,8 +27,8 @@ def create_app(config_name):
     socketio.init_app(app)
     bootstrap.init_app(app)
     moment.init_app(app)
-    db.init_app(app)
     login_manager.init_app(app)
+    redis_conn.init_app(app)
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os, sys
-from app import create_app, db
+from app import create_app
 from app.models import User
 from flask_script import Manager, Shell, commands
 from app.device_mng import socketio
